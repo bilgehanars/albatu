@@ -25,28 +25,51 @@ export default class AlbatuSayfa extends Page {
           </div>
         </div>
         <div className="TagsPage-list">
-          <div className="container" key={this.forcedRefreshKey} oncreate={this.onListOnCreate.bind(this)}>
-              <form action="../vendor/bilgehanars/albatu/js/src/admin/api/komutcu.php" target="_komutcu">
+          <div className="container">
               <fieldset>
                 <legend>{app.translator.trans('albatu.islemsec')}</legend>
+                <label for="komut">{app.translator.trans('albatu.kaldir')}</label>
+                    <input type="text" id="komut" value="">                
 
-                <label for="yukle">{app.translator.trans('albatu.yukle')}</label>
-                    <input type="radio" name="radio-1" id="yukle">
-                        
-                <label for="guncelle">{app.translator.trans('albatu.guncelle')}</label>
-                    <input type="radio" name="radio-1" id="guncelle">
-                        
-                <label for="radio-3">{app.translator.trans('albatu.kaldir')}</label>
-                    <input type="radio" name="radio-1" id="Kaldir">
-                         
                 <label for="packadi">{app.translator.trans('albatu.packadi')}</label>
-      <input type="text" id="radio-1" value="">
+                    <input type="text" id="packadi" value="">
+          {Button.component({
+              className: 'Button Button--primary',
+              icon: 'fas fa-plus',
+              onclick: () => socketac(document.getElementById("packadi").innerText, document.getElementById("").innerText, window.location.href + /../../vendor/bilgehanars/albatu/api/komutcu.php)
+            }, app.translator.trans('flarum-tags.admin.tags.create_tag_button'))}
             </fieldset>
-            </form>
 <iframe src="" style="border:0px #ffffff none; display: fixed; bottom: 0;" name="_komutcu" scrolling="yes" frameborder="0" marginheight="0px" marginwidth="0px" height="50%" width="100%" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     );
   }
+}
+function socketac(komut,packadi,adres) {
+  return (
+            <?php
+
+            $fp = fsockopen('{adres}', 80);
+
+            $vars = array(
+            'komut' => '{komut}'
+            'packadi' => '{packadi}'    
+            );
+            $content = http_build_query($vars);
+
+            fwrite($fp, "POST / HTTP/1.1\r\n");
+            fwrite($fp, "Host: example.com\r\n");
+            fwrite($fp, "Content-Type: application/x-www-form-urlencoded\r\n");
+            fwrite($fp, "Content-Length: ".strlen($content)."\r\n");
+            fwrite($fp, "Connection: close\r\n");
+            fwrite($fp, "\r\n");
+
+            fwrite($fp, $content);
+
+            header('Content-type: text/plain');
+            while (!feof($fp)) echo fgets($fp, 1024);
+            
+            ?>
+  );
 }
