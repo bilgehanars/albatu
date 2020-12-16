@@ -1,5 +1,5 @@
 app.initializers.add('bilgehanars/albatu', () => {
-    app.routes.tags = {path: '/AlbatuSayfa', component: AlbatuSayfa};
+    app.routes.tags = {path: '/Albatu', component: AlbatuSayfa};
     ekle();
 });
 
@@ -15,7 +15,7 @@ function ekle() {
 
   extend(AdminNav.prototype, 'items', items => {
     items.add('albatu', AdminLinkButton.component({
-      href: app.route('albatusayfa'),
+      href: app.route('Albatu'),
       icon: 'fas fa-meteor',
       description: app.translator.trans('albatu.navAciklama')
     }, app.translator.trans('albatu.nav')));
