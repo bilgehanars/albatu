@@ -25,9 +25,9 @@
     "flarum-extension": {
       "title": "Extension Market",
       "icon": {
-        "name": "",
-        "backgroundColor": "",
-        "color": ""
+        "name": "fas fa-meteor",
+        "backgroundColor": "#72210f",
+        "color": "#fff"
       }
     },
     "flagrow": {

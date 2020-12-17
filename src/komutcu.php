@@ -1,25 +1,27 @@
 <?
-var $SiteAnaSayfa = '../../../../'
+$SiteAnaSayfa = realpath(__FILE__.'/../../../../');
 
-require $siteAnaSayfa. '/vendor/autoload.php';
+namespace bilgehanars\albatu
 
-if ($_SERVER['REMOTE_ADDR']; != $_SERVER['SERVER_ADDR']) { __halt_compiler(); }
+    class AlbatuRoute{
+    echo $siteanasayfa
+        }
+/***
 use Composer\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput as Output;
 use Symfony\Component\Console\Output\OutputInterface;
-use Flarum\User
 
 ini_set('memory_limit', '1G');
 set_time_limit(300); // 5 minutes execution
 
 putenv('COMPOSER_HOME=' . $SiteAnaSayfa . '/vendor/bin/composer');
 
-
+public konsol() {
     $output = new Output;
-$input = new ArrayInput([
-    'command' => $post['komut'], 
-    'packages' => [$post['packadi']], 
+    $input = new ArrayInput([
+    'command' => , 
+    'packages' => [$p], 
     '--working-dir' => $SiteAnaSayfa,
 ]);
 
@@ -30,5 +32,6 @@ $application->run($input, $output);
 echo $input;
 echo '<hr>';
 echo '<pre>' . $output->fetch() . '</pre>';
+}
 
-
+***/

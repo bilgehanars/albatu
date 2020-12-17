@@ -1,23 +1,9 @@
-app.initializers.add('bilgehanars/albatu', () => {
-    app.routes.tags = {path: '/Albatu', component: AlbatuSayfa};
-    ekle();
-});
-
-
+import app from 'flarum/app';
 import { extend } from 'flarum/extend';
-import AdminNav from 'flarum/components/AdminNav';
-import AdminLinkButton from 'flarum/components/AdminLinkButton';
+import DashboardPage from 'flarum/components/DashboardPage';
+import Sayfalandir from "./sayfalandir";
 
-import AlbatuSayfa from './AlbatuSayfa';
+app.initializers.add('bilgehanars/albatu', () => {
+    Sayfalandir();
 
-function ekle() {
- 
-
-  extend(AdminNav.prototype, 'items', items => {
-    items.add('albatu', AdminLinkButton.component({
-      href: app.route('Albatu'),
-      icon: 'fas fa-meteor',
-      description: app.translator.trans('albatu.navAciklama')
-    }, app.translator.trans('albatu.nav')));
-  });
-}
+});
