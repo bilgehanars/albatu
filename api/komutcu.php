@@ -1,7 +1,9 @@
 <?
-var $SiteAnaSayfa = '../../../../../../..'
+var $SiteAnaSayfa = '../../../../'
 
 require $siteAnaSayfa. '/vendor/autoload.php';
+
+if ($_SERVER['REMOTE_ADDR']; != $_SERVER['SERVER_ADDR']) { __halt_compiler(); }
 use Composer\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput as Output;
@@ -17,7 +19,7 @@ putenv('COMPOSER_HOME=' . $SiteAnaSayfa . '/vendor/bin/composer');
     $output = new Output;
 $input = new ArrayInput([
     'command' => $post['komut'], 
-    'packages' => [$packadi], 
+    'packages' => [$post['packadi']], 
     '--working-dir' => $SiteAnaSayfa,
 ]);
 

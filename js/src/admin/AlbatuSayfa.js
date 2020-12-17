@@ -24,11 +24,11 @@ export default class AlbatuSayfa extends Page {
             </p>
           </div>
         </div>
-        <div className="TagsPage-list">
+        <div className="komutInput">
           <div className="container">
               <fieldset>
                 <legend>{app.translator.trans('albatu.islemsec')}</legend>
-                <label for="komut">{app.translator.trans('albatu.kaldir')}</label>
+                <label for="komut">{app.translator.trans('albatu.komut')}</label>
                     <input type="text" id="komut" value="">                
 
                 <label for="packadi">{app.translator.trans('albatu.packadi')}</label>
@@ -36,10 +36,10 @@ export default class AlbatuSayfa extends Page {
           {Button.component({
               className: 'Button Button--primary',
               icon: 'fas fa-plus',
-              onclick: () => socketac(document.getElementById("packadi").innerText, document.getElementById("").innerText, window.location.href + /../../vendor/bilgehanars/albatu/api/komutcu.php)
+              onclick: () => socketac(document.getElementById("packadi").innerText, document.getElementById("komut").innerText, window.location.href + /../../vendor/bilgehanars/albatu/api/komutcu.php)
             }, app.translator.trans('flarum-tags.admin.tags.create_tag_button'))}
             </fieldset>
-<iframe src="" style="border:0px #ffffff none; display: fixed; bottom: 0;" name="_komutcu" scrolling="yes" frameborder="0" marginheight="0px" marginwidth="0px" height="50%" width="100%" allowfullscreen></iframe>
+            <div id="komutsatiri" style="display: fixed; bottom: 0; height:40%;" >AlbatuCMD <hr></div>
           </div>
         </div>
       </div>
@@ -68,8 +68,10 @@ function socketac(komut,packadi,adres) {
             fwrite($fp, $content);
 
             header('Content-type: text/plain');
-            while (!feof($fp)) echo fgets($fp, 1024);
-            
+            echo "<script> var x = document.getElementById(komutsatiri).innerHTML; ";
+            while (!feof($fp)) echo "x += ".fgets($fp, 1024);.";"
+            echo "document.getElementById("komutsatiri").innerHTML = x"
+            echo "</script>"
             ?>
   );
 }
