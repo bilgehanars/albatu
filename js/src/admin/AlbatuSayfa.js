@@ -46,32 +46,3 @@ export default class AlbatuSayfa extends Page {
     );
   }
 }
-function socketac(komut,packadi,adres) {
-  return (
-            <?php
-
-            $fp = fsockopen('{adres}', 80);
-
-            $vars = array(
-            'komut' => '{komut}'
-            'packadi' => '{packadi}'    
-            );
-            $content = http_build_query($vars);
-
-            fwrite($fp, "POST / HTTP/1.1\r\n");
-            fwrite($fp, "Host: example.com\r\n");
-            fwrite($fp, "Content-Type: application/x-www-form-urlencoded\r\n");
-            fwrite($fp, "Content-Length: ".strlen($content)."\r\n");
-            fwrite($fp, "Connection: close\r\n");
-            fwrite($fp, "\r\n");
-
-            fwrite($fp, $content);
-
-            header('Content-type: text/plain');
-            echo "<script> var x = document.getElementById(komutsatiri).innerHTML; ";
-            while (!feof($fp)) echo "x += ".fgets($fp, 1024);.";"
-            echo "document.getElementById("komutsatiri").innerHTML = x"
-            echo "</script>"
-            ?>
-  );
-}
