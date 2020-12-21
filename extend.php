@@ -24,7 +24,7 @@ return [
     new Extend\Locales(__DIR__ . '/resources/locale'),
 
     (new Extend\Routes('admin'))
-        ->post('/AlbakuKomut',AlbatuKomut , BilgehanAlbatu::class),
+        ->post('/AlbakuKomut','AlbatuKomut' , BilgehanAlbatu::class),
     
 
 ];
