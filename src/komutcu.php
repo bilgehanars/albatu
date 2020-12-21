@@ -1,5 +1,5 @@
 <?
-$SiteAnaSayfa = realpath(__FILE__. '/../../../..');
+
 
 namespace Bilgehanars\Albatu
 
@@ -14,6 +14,7 @@ use Symfony\Component\Console\Output\BufferedOutput as Output;
 use Symfony\Component\Console\Output\OutputInterface;
 use Flarum\User;
 
+$SiteAnaSayfa = realpath(__FILE__. '/../../../..');
 
 class BilgehanAlbatu implements RequestHandlerInterface {
         protected $view;
