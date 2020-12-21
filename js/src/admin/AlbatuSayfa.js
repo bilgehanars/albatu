@@ -36,7 +36,7 @@ export default class AlbatuSayfa extends ExtensionPage {
   onsubmit() {
       app.request({
         method: "POST",
-        url: "../../../Admin/AlbatuKomut",
+        url: app.forum.attribute('apiUrl') + "/AlbatuKomut",
         params: {komut: this.komut, packadi: this.packadi},
         deserialize: val => val,
         })

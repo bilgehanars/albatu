@@ -36,7 +36,7 @@ class BilgehanAlbatu implements RequestHandlerInterface {
         } 
     
         public function yap() {
-
+                if isset($request->getAttribute('actor')->assertAdmin()) {
                 if ($this->komut != $null)  && ($this->packadi) != $null) {
 
                 ini_set('memory_limit', '1G');
@@ -54,8 +54,9 @@ class BilgehanAlbatu implements RequestHandlerInterface {
                 $application = new Application();
                 $application->setAutoExit(false);
                 $application->run($input, $output);
-                $view = '';
-                $view .= $this->view->make('<pre>' . $output->fetch() . '</pre>');
+                $cikis = '<hr>';
+                $cikis .= '<pre>' . $output->fetch() . '</pre>'
+                $view .= $this->view->make($cikis);
             }
 
         }
