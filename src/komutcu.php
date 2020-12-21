@@ -12,6 +12,7 @@ use Composer\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput as Output;
 use Symfony\Component\Console\Output\OutputInterface;
+use Flarum\User;
 
 
 class BilgehanAlbatu implements RequestHandlerInterface {
