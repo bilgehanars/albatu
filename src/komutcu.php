@@ -13,28 +13,31 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput as Output;
 use Symfony\Component\Console\Output\OutputInterface;
 
+
 class BilgehanAlbatu implements RequestHandlerInterface {
+        protected $view;
     
-        private $komut;  
-        private $packadi;
+        public function __construct(Factory $view)
+        {
+            $this->view = $view;
+        }
+        public function handle(Request $request): Response
+        {
+            public $komut;  
+            public $packadi;
         
-        if isset(Arr::post($request->getQueryParams(), 'komut')) && isset(Arr::post($request->getQueryParams(), 'packadi')) 
+            if isset(Arr::post($request->getQueryParams(), 'komut')) && isset(Arr::post($request->getQueryParams(), 'packadi')) 
         { 
             $komut = Arr::post($request->getQueryParams(), 'komut');
             $packadi = Arr::post($request->getQueryParams(), 'packadi');
             $this->yap();
+            return new HtmlResponse($view->render());
         
         } 
     
-            
-        public function belirle($komut, $packadi) {
-            $this->komut = $komut;
-            $this->packadi = $packadi;
-        }
         public function yap() {
 
-
-            if ($this->komut != $null)  && ($this->packadi) != $null) {
+                if ($this->komut != $null)  && ($this->packadi) != $null) {
 
                 ini_set('memory_limit', '1G');
                 set_time_limit(300); // 5 minutes execution
@@ -51,12 +54,10 @@ class BilgehanAlbatu implements RequestHandlerInterface {
                 $application = new Application();
                 $application->setAutoExit(false);
                 $application->run($input, $output);
-
-                echo $input;
-                echo '<hr>';
-                echo '<pre>' . $output->fetch() . '</pre>';
+                $view = '';
+                $view .= $this->view->make('<pre>' . $output->fetch() . '</pre>');
             }
-            else { echo "Nice Try"; }
+
         }
 }   
 

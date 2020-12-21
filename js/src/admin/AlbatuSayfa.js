@@ -36,7 +36,7 @@ export default class AlbatuSayfa extends ExtensionPage {
   onsubmit() {
       app.request({
         method: "POST",
-        url: "/AlbatuKomut",
+        url: "../../../Admin/AlbatuKomut",
         params: {komut: this.komut, packadi: this.packadi},
         deserialize: val => val,
         })
