@@ -1,7 +1,7 @@
 <?
 $SiteAnaSayfa = realpath(__FILE__. '/../../../..');
 
-namespace bilgehanars\albatu
+namespace Bilgehanars\Albatu
 
 use Illuminate\Support\Arr;
 use Laminas\Diactoros\Response\HtmlResponse;
@@ -55,8 +55,8 @@ class BilgehanAlbatu implements RequestHandlerInterface {
                 $application->setAutoExit(false);
                 $application->run($input, $output);
                 $cikis = '<hr>';
-                $cikis .= '<pre>' . $output->fetch() . '</pre>'
-                $view .= $this->view->make($cikis);
+                $cikis .= '<pre>' . $output->fetch() . '</pre>';
+                $view = $this->view->make($cikis);
             }
         }
         }
