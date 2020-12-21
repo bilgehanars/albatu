@@ -3,9 +3,10 @@ import Button from 'flarum/components/Button';
 import Component from 'flarum/Component';
 import FieldSet from 'flarum/components/FieldSet';
 import Switch from 'flarum/components/Switch';
+import withAttr from 'flarum/utils/withAttr';
 
 
-class AlbatuSayfa extends ExtensionPage {
+export default class AlbatuSayfa extends ExtensionPage {
   oninit(vnode) {
     this.komut = "";
     this.packadi = "";

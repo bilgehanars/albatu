@@ -1,8 +1,7 @@
 import app from 'flarum/app';
-import sayfalandir from './sayfalandir';
+import AlbatuSayfa from './AlbatuSayfa';
 
 app.initializers.add('bilgehanars-albatu', (app) => {
-    app.extensionData
-        .for('bilgehanars-albatu')
-        .registerPage(AlbatuSayfa)
+  app.extensionData.for('bilgehanars-albatu').registerPage(AlbatuSayfa);
+ 
 });
