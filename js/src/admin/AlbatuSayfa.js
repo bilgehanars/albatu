@@ -39,10 +39,8 @@ export default class AlbatuSayfa extends ExtensionPage {
         url: app.forum.attribute('apiUrl') + "/AlbatuKomut",
         params: {komut: this.komut, packadi: this.packadi},
         deserialize: val => val,
-        })
-      
-        
-      document.getElementById(sonuc).innerHTML += val;
-      
+        }).then(function(val) {
+    document.getElementById('sonuc').innerHTML += val
+      }) 
   }
 }

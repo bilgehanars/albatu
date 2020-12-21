@@ -23,7 +23,7 @@ return [
 
     new Extend\Locales(__DIR__ . '/resources/locale'),
 
-    (new Extend\Routes('Api'))
+    (new Extend\Routes('api'))
         ->post('/AlbakuKomut','Albatu.Komut' , BilgehanAlbatu::class),
     
 
