@@ -58,7 +58,7 @@ class BilgehanAlbatu implements RequestHandlerInterface {
                 $cikis .= '<pre>' . $output->fetch() . '</pre>'
                 $view .= $this->view->make($cikis);
             }
-
+        }
         }
 }   
 
