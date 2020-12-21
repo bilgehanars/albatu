@@ -1,9 +1,8 @@
 import app from 'flarum/app';
-import { extend } from 'flarum/extend';
-import DashboardPage from 'flarum/components/DashboardPage';
-import Sayfalandir from "./sayfalandir";
+import sayfalandir from './sayfalandir';
 
-app.initializers.add('bilgehanars/albatu', () => {
-    Sayfalandir();
-
+app.initializers.add('bilgehanars-albatu', (app) => {
+    app.extensionData
+        .for('bilgehanars-albatu')
+        .registerPage(AlbatuSayfa)
 });
