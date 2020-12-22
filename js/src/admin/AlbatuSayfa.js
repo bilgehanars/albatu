@@ -26,20 +26,16 @@ export default class AlbatuSayfa extends ExtensionPage {
         </FieldSet>
         <Button type="submit">Execute</Button>
       </form>
-    <div> This is a beta software. Extension store will come here in soon </div>
-    <div id="sonuc"><h1>Console</h1></div>
+    <iframe style="bottom:0; position: fixed; width: %75; right: 0px;" src="https://extiverse.com" id="sonuc"></iframe>
     </div>
     )
   }
 
   onsubmit() {
-      app.request({
-        method: "POST",
-        url: app.forum.attribute('baseUrl') + '/vendor/bilgehanars/albatu/src/komutcu.php',
-        params: {komut: this.komut, packadi: this.packadi},
-        deserialize: val => val,
-        }).then(function(sonc) {
-    document.getElementById('sonuc').innerHTML += sonc
-      }) 
+      basekomut = btoa(this.komut);
+      basepackadi = btoa(this.packadi);
+      urlss = app.forum.attribute('baseUrl') + '/vendor/bilgehanars/albatu/src/komutcu.php?komut=' + basekomut + '&packadi=' + basepackadi;
+    document.getElementById('sonuc').src += urlss;
+      } 
   }
-}
+

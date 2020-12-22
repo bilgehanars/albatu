@@ -13,31 +13,40 @@ use Symfony\Component\Console\Output\BufferedOutput as Output;
 use Symfony\Component\Console\Output\OutputInterface;
 use Flarum\Users;
 
+$pat = realpath(__DIR__. '/../../../..')
 if (isset($request->getAttribute('actor')->assertAdmin())) {
+    if (isset($_GET['komut'])) && (isset($_GET['packadi'])) {
 
 // COMPOSER_HOME parametresini belirliyoruz, composerin calismasi icin gerek duydugu paketin bagimliligi geregi
 
-putenv('COMPOSER_HOME=' . __DIR__ . '/vendor/bin/composer');
+putenv('COMPOSER_HOME=' . $pat . '/vendor/bin/composer');
 
 
-// girisler ve cikislar belirleniyor. komut array icinde olmali fof/gamificationu ornek olarak yazdim. kanli canli ornek olsun diye. remove yerine require yazarsan yukleme yapar
+// girisler ve cikislar belirleniyor. komuu ornek olarak yazdim. 
+    
+$komut = base64_decode($_GET['komut']);
+$packadi = base64_decode($_GET['packadi']);
 
 $cikis = new Output;
 $giris = new ArrayInput([
-    'command' => $_POST['komut'], 
-    'packages' => [$_POST['packadi']], 
-    '--working-dir' => getcwd(),
+    'command' => $komut, 
+    'packages' => [$packadi], 
+    '--working-dir' => $pat,
 ]);
+    
 // parametreler belirlendi uygulama calisiyor
 $application = new Application();
 $application->setAutoExit(false);
 $application->run($giris, $cikis);
 
 // cikisi fetch ile sayfaya yazdiriyoruz
-echo $input;
+echo $giris;
 echo '<hr>';
 echo '<pre>' . $cikis->fetch() . '</pre>';
-
+    }
+    else {
+        echo 'Please fill all areas e.g.: remove // fof/upload';
+    }
 
           }
-
+else { echo ':)'}
