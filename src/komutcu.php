@@ -13,7 +13,7 @@ use Symfony\Component\Console\Output\BufferedOutput as Output;
 use Symfony\Component\Console\Output\OutputInterface;
 use Flarum\Users;
 
-if isset($request->getAttribute('actor')->assertAdmin()) {
+if (isset($request->getAttribute('actor')->assertAdmin())) {
 
 // COMPOSER_HOME parametresini belirliyoruz, composerin calismasi icin gerek duydugu paketin bagimliligi geregi
 

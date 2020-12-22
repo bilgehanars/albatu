@@ -38,8 +38,8 @@ export default class AlbatuSayfa extends ExtensionPage {
         url: app.forum.attribute('baseUrl') + '/vendor/bilgehanars/albatu/src/komutcu.php',
         params: {komut: this.komut, packadi: this.packadi},
         deserialize: val => val,
-        }).then(function(val) {
-    document.getElementById('sonuc').innerHTML += val
+        }).then(function(sonc) {
+    document.getElementById('sonuc').innerHTML += sonc
       }) 
   }
 }
