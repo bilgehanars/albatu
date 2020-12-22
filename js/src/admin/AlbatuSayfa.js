@@ -10,7 +10,6 @@ export default class AlbatuSayfa extends ExtensionPage {
   oninit(vnode) {
     this.komut = "";
     this.packadi = "";
-    this.booleanInput = false;
   }
 
   view() {
@@ -36,7 +35,7 @@ export default class AlbatuSayfa extends ExtensionPage {
   onsubmit() {
       app.request({
         method: "POST",
-        url: app.forum.attribute('apiUrl') + "/AlbatuKomut",
+        url: app.forum.attribute('baseUrl') + '/vendor/bilgehanars/albatu/src/komutcu.php',
         params: {komut: this.komut, packadi: this.packadi},
         deserialize: val => val,
         }).then(function(val) {
