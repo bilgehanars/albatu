@@ -2,21 +2,15 @@ import ExtensionPage from 'flarum/components/ExtensionPage';
 import Button from 'flarum/components/Button';
 import Component from 'flarum/Component';
 import FieldSet from 'flarum/components/FieldSet';
-import Switch from 'flarum/components/Switch';
 import withAttr from 'flarum/utils/withAttr';
 
 
-export default class AlbatuSayfa extends ExtensionPage {
-  oninit(vnode) {
-    this.komut = "";
-    this.packadi = "";
-  }
-
-  view() {
+export default class AlbatuGiris extends ExtensionPage {
+    content() {
     return (
-    <div id="container">
-      <form onsubmit={this.onsubmit.bind(this)}>
-        <FieldSet label="Composer Command - Just write Require/Update/Remove">
+        <div className={"container"}>
+        <form onsubmit={this.onsubmit.bind(this)}>
+        <FieldSet label="Composer Command - Require/Update/Remove">
           <input className="FormControl" value={this.komut} oninput={e => this.komut = e.target.value}>
        </input>
         </FieldSet>
@@ -26,16 +20,28 @@ export default class AlbatuSayfa extends ExtensionPage {
         </FieldSet>
         <Button type="submit">Execute</Button>
       </form>
-    <iframe style="bottom:0; position: fixed; width: %75; right: 0px;" src="https://extiverse.com" id="sonuc"></iframe>
+        <div className={"cevap"}></div>
     </div>
+    
+
     )
   }
 
   onsubmit() {
-      basekomut = btoa(this.komut);
-      basepackadi = btoa(this.packadi);
-      urlss = app.forum.attribute('baseUrl') + '/vendor/bilgehanars/albatu/src/komutcu.php?komut=' + basekomut + '&packadi=' + basepackadi;
-    document.getElementById('sonuc').src += urlss;
-      } 
-  }
+        if (this.komut = 'remove') {komutsayfasi = '/AlbatuKaldir';}
+        if (this.komut = 'require') {komutsayfasi = '/AlbatuYukle';}
+        if (this.komut = 'update') {komutsayfasi = '/AlbatuGuncelle';}
+          app.request({
+            method: 'POST',
+            url: app.forum.attribute('apiUrl') + komutsayfasi,
+            timeout: 0,
+            data: {
+                packadi: this.packadi
+            }
+        }).then(response => {
+            return m.render('div.cevap', response)
+        })
+    }   
+  } 
+  
 
