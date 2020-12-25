@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Flarum\User;
 use Flarum\Foundation;
 
-$SiteAnaSayfa = app(Paths::class)['base']
+$SiteAnaSayfa = app(Paths::class)['base'];
 
 class AlbatuKaldir implements RequestHandlerInterface {
         protected $view;

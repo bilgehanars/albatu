@@ -12,8 +12,9 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput as Output;
 use Symfony\Component\Console\Output\OutputInterface;
 use Flarum\User;
+use Flarum\Foundation;
 
-$SiteAnaSayfa = realpath(__FILE__. '/../../../..');
+$SiteAnaSayfa = $SiteAnaSayfa = app(Paths::class)['base'];
 
 class AlbatuYukle implements RequestHandlerInterface {
         protected $view;
