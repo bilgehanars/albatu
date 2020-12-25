@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Flarum\User;
 use Flarum\Foundation;
 
-$SiteAnaSayfa = $SiteAnaSayfa = app(Paths::class)['base'];
+$SiteAnaSayfa = app(Paths::class)['base'];
 
 class AlbatuYukle implements RequestHandlerInterface {
         protected $view;
@@ -25,8 +25,6 @@ class AlbatuYukle implements RequestHandlerInterface {
         }
         public function handle(Request $request): Response
         {
-            public $packadi;
-        
             if isset(Arr::post($request->getQueryParams(), 'packadi')) 
         { 
             this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
