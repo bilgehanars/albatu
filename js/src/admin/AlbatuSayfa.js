@@ -6,18 +6,23 @@ import withAttr from 'flarum/utils/withAttr';
 
 
 export default class AlbatuGiris extends ExtensionPage {
-    content() {
-    return (
-        <div className={"container"}>
-        <form onsubmit={this.onsubmit.bind(this)}>
-        <FieldSet label="Composer Command - Require/Update/Remove">
-          <input className="FormControl" value={this.komut} oninput={e => this.komut = e.target.value}>
-       </input>
-        </FieldSet>
-        <FieldSet label="Package Name. (Example: Bilgehanars/Albatu)">
-          <input className="FormControl" value={this.packadi} oninput={e => this.packadi = e.target.value}>
-       </input>
-        </FieldSet>
+     oninit(vnode) {
+            this.komut = "";
+            this.packadi = "";
+        }
+
+        content() {
+        return (
+            <div className={"container"}>
+            <form onsubmit={this.onsubmit.bind(this)}>
+                <FieldSet label="Composer Command - Require/Update/Remove">
+                    <input className="FormControl" value={this.komut} oninput={e => this.komut = e.target.value}>
+                    </input>
+                </FieldSet>
+                <FieldSet label="Package Name. (Example: Bilgehanars/Albatu)">
+                    <input className="FormControl" value={this.packadi} oninput={e => this.packadi = e.target.value}>
+                    </input>
+            </FieldSet>
         <Button type="submit">Execute</Button>
       </form>
         <div className={"cevap"}>Console</div>

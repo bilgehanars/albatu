@@ -14,11 +14,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Flarum\User;
 use Flarum\Foundation;
 
-$SiteAnaSayfa = app(Paths::class)['base'];
 
 class AlbatuKaldir implements RequestHandlerInterface {
         protected $view;
         public $packadi;
+        public $SiteAnaSayfa
         public function __construct(Factory $view)
         {
             $this->view = $view;
@@ -31,6 +31,8 @@ class AlbatuKaldir implements RequestHandlerInterface {
         { 
             this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
             $this->yap();
+            $SiteAnaSayfa = app(Paths::class)['base'];
+
             return new HtmlResponse($view->render());
         
         } 
@@ -38,7 +40,7 @@ class AlbatuKaldir implements RequestHandlerInterface {
         }
         public function yap() {
                 if isset($request->getAttribute('actor')->assertAdmin()) {
-                ($this->packadi != $null) {
+                if ($this->packadi != $null) {
 
                 ini_set('memory_limit', '1G');
                 set_time_limit(300); // 5 minutes execution

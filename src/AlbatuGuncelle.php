@@ -39,7 +39,7 @@ class AlbatuGuncelle implements RequestHandlerInterface {
         }
         public function yap() {
                 if isset($request->getAttribute('actor')->assertAdmin()) {
-                ($this->packadi != $null) {
+                if ($this->packadi != $null) {
 
                 ini_set('memory_limit', '1G');
                 set_time_limit(300); // 5 minutes execution
