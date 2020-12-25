@@ -18,7 +18,7 @@ $SiteAnaSayfa = $SiteAnaSayfa = app(Paths::class)['base'];
 
 class AlbatuYukle implements RequestHandlerInterface {
         protected $view;
-    
+        public $packadi;
         public function __construct(Factory $view)
         {
             $this->view = $view;

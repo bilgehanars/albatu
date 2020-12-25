@@ -18,14 +18,14 @@ $SiteAnaSayfa = app(Paths::class)['base'];
 
 class AlbatuKaldir implements RequestHandlerInterface {
         protected $view;
-    
+        public $packadi;
         public function __construct(Factory $view)
         {
             $this->view = $view;
         }
         public function handle(Request $request): Response
         {
-            public $packadi;
+
         
             if isset(Arr::post($request->getQueryParams(), 'packadi')) 
         { 

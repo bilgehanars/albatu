@@ -19,6 +19,7 @@ $SiteAnaSayfa = app(Paths::class)['base'];
 
 class AlbatuGuncelle implements RequestHandlerInterface {
         protected $view;
+        public $packadi;
     
         public function __construct(Factory $view)
         {
@@ -26,7 +27,6 @@ class AlbatuGuncelle implements RequestHandlerInterface {
         }
         public function handle(Request $request): Response
         {
-            public $packadi;
         
             if isset(Arr::post($request->getQueryParams(), 'packadi')) 
         { 
