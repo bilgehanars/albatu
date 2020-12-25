@@ -13,6 +13,7 @@ namespace Bilgehanars\Albatu;
 
 use Flarum\Extend;
 use Flarum\Foundation\Application;
+use Flarum\Extend\Routes;
 
 
 return [
@@ -23,10 +24,10 @@ return [
 
     new Extend\Locales(__DIR__ . '/resources/locale'),
     
-    (new Routes('api'))
-        ->post('/AlbatuYukle', 'Albatu.Yukle', AlbatuYukle::class),
-        ->post('/AlbatuKaldir', 'Albatu.Kaldir', AlbatuKaldir::class),
-        ->post('/AlbatuGuncelle', 'Albatu.Guncelle' AlbatuGuncelle::class),
+    (new Extend\Routes('api'))
+        ->post('/AlbatuYukle', 'Albatu.Yukle', AlbatuYukle::class)
+        ->post('/AlbatuKaldir', 'Albatu.Kaldir', AlbatuKaldir::class)
+        ->post('/AlbatuGuncelle', 'Albatu.Guncelle', AlbatuGuncelle::class),
 
 ];
 

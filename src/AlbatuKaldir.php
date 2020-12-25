@@ -1,6 +1,6 @@
 <?
 
-namespace Bilgehanars\Albatu
+namespace Bilgehanars\Albatu;
 
 use Illuminate\Support\Arr;
 use Laminas\Diactoros\Response\HtmlResponse;
@@ -12,8 +12,9 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput as Output;
 use Symfony\Component\Console\Output\OutputInterface;
 use Flarum\User;
+use Flarum\Foundation;
 
-$SiteAnaSayfa = realpath(__FILE__. '/../../../..');
+$SiteAnaSayfa = app(Paths::class)['base']
 
 class AlbatuKaldir implements RequestHandlerInterface {
         protected $view;

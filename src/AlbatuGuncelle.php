@@ -1,6 +1,6 @@
 <?
 
-namespace Bilgehanars\Albatu
+namespace Bilgehanars\Albatu;
 
 use Illuminate\Support\Arr;
 use Laminas\Diactoros\Response\HtmlResponse;

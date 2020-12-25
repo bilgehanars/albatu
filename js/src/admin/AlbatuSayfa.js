@@ -20,7 +20,7 @@ export default class AlbatuGiris extends ExtensionPage {
         </FieldSet>
         <Button type="submit">Execute</Button>
       </form>
-        <div className={"cevap"}></div>
+        <div className={"cevap"}>Console</div>
     </div>
     
 
@@ -32,7 +32,7 @@ export default class AlbatuGiris extends ExtensionPage {
         if (this.komut = 'require') {komutsayfasi = '/AlbatuYukle';}
         if (this.komut = 'update') {komutsayfasi = '/AlbatuGuncelle';}
           app.request({
-            method: 'POST',
+            method: 'post',
             url: app.forum.attribute('apiUrl') + komutsayfasi,
             timeout: 0,
             data: {
@@ -43,5 +43,4 @@ export default class AlbatuGiris extends ExtensionPage {
         })
     }   
   } 
-  
 
