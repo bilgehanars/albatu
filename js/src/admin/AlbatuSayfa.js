@@ -7,8 +7,8 @@ import withAttr from 'flarum/utils/withAttr';
 
 export default class AlbatuGiris extends ExtensionPage {
      oninit(vnode) {
-            this.komut = "";
-            this.packadi = "";
+            this.komut = '';
+            this.packadi = '';
         }
 
         content() {
