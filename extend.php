@@ -25,9 +25,7 @@ return [
     new Extend\Locales(__DIR__ . '/resources/locale'),
     
     (new Extend\Routes('api'))
-        ->post('/AlbatuYukle', 'Albatu.Yukle', AlbatuYukle::class)
-        ->post('/AlbatuKaldir', 'Albatu.Kaldir', AlbatuKaldir::class)
-        ->post('/AlbatuGuncelle', 'Albatu.Guncelle', AlbatuGuncelle::class),
+        ->post('/AlbatuKomut', 'Albatu.Komut', AlbatuKomut::class),
 
 ];
 

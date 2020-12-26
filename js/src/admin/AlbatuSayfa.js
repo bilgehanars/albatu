@@ -34,14 +34,12 @@ export default class AlbatuGiris extends ExtensionPage {
   }
 
   onsubmit() {
-        if (this.komut = 'remove') {komutsayfasi = '/AlbatuKaldir';}
-        if (this.komut = 'require') {komutsayfasi = '/AlbatuYukle';}
-        if (this.komut = 'update') {komutsayfasi = '/AlbatuGuncelle';}
           app.request({
             method: 'post',
-            url: app.forum.attribute('apiUrl') + komutsayfasi,
+            url: app.forum.attribute('apiUrl') + 'AlbatuKomut',
             timeout: 0,
             data: {
+                komut: this.komut,
                 packadi: this.packadi
             }
         }).then(response => {

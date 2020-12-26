@@ -15,10 +15,12 @@ use Flarum\User;
 use Flarum\Foundation;
 
 
-class AlbatuKaldir implements RequestHandlerInterface {
+class AlbatuKomut implements RequestHandlerInterface {
         protected $view;
         public $packadi;
         public $SiteAnaSayfa;
+        public $komut;
+    
         public function __construct(Factory $view)
         {
             $this->view = $view;
@@ -27,9 +29,10 @@ class AlbatuKaldir implements RequestHandlerInterface {
         {
 
         
-            if isset(Arr::post($request->getQueryParams(), 'packadi')) 
+            if isset(Arr::post($request->getQueryParams(), 'packadi')) && isset(Arr::post($request->getQueryParams(), 'komut'))
         { 
             this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
+            this->$komut = Arr::post($request->getQueryParams(), 'komut');
             $this->yap();
             $SiteAnaSayfa = app(Paths::class)['base'];
 
@@ -49,8 +52,8 @@ class AlbatuKaldir implements RequestHandlerInterface {
 
                 $output = new Output;
                 $input = new ArrayInput([
-                    'command' => 'remove', 
-                    'packages' => [$packadi], 
+                    'command' => this->$komut, 
+                    'packages' => [this->$packadi], 
                     '--working-dir' => $SiteAnaSayfa,
                 ]);
 
