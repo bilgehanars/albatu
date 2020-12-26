@@ -15,23 +15,24 @@ use Flarum\User;
 use Flarum\Foundation;
 
 
-$SiteAnaSayfa = app(Paths::class)['base'];
-
-class AlbatuGuncelle implements RequestHandlerInterface {
+class AlbatuKaldir implements RequestHandlerInterface {
         protected $view;
         public $packadi;
-    
+        public $SiteAnaSayfa;
         public function __construct(Factory $view)
         {
             $this->view = $view;
         }
         public function handle(Request $request): Response
         {
+
         
             if isset(Arr::post($request->getQueryParams(), 'packadi')) 
         { 
             this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
             $this->yap();
+            $SiteAnaSayfa = app(Paths::class)['base'];
+
             return new HtmlResponse($view->render());
         
         } 

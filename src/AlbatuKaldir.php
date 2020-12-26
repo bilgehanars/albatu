@@ -18,7 +18,7 @@ use Flarum\Foundation;
 class AlbatuKaldir implements RequestHandlerInterface {
         protected $view;
         public $packadi;
-        public $SiteAnaSayfa
+        public $SiteAnaSayfa;
         public function __construct(Factory $view)
         {
             $this->view = $view;

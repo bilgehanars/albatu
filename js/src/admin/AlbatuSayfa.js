@@ -7,6 +7,7 @@ import withAttr from 'flarum/utils/withAttr';
 
 export default class AlbatuGiris extends ExtensionPage {
      oninit(vnode) {
+            super.oninit(vnode); 
             this.komut = '';
             this.packadi = '';
         }
@@ -44,7 +45,7 @@ export default class AlbatuGiris extends ExtensionPage {
                 packadi: this.packadi
             }
         }).then(response => {
-            return m.render('div.cevap', response)
+            return m.redraw('div.cevap', response)
         })
     }   
   } 
