@@ -36,7 +36,7 @@ export default class AlbatuGiris extends ExtensionPage {
   onsubmit() {
           app.request({
             method: 'post',
-            url: app.forum.attribute('apiUrl') + 'AlbatuKomut',
+            url: app.forum.attribute('apiUrl') + '/AlbatuKomut',
             timeout: 0,
             data: {
                 komut: this.komut,
