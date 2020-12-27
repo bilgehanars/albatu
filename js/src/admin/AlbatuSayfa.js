@@ -34,16 +34,17 @@ export default class AlbatuGiris extends ExtensionPage {
   }
 
   onsubmit() {
-          app.request({
+      var cevap = app.request({
             method: 'post',
-            url: app.forum.attribute('apiUrl') + '/AlbatuKomut',
+            url: app.forum.attribute('baseUrl') + '/AlbatuKomut',
             timeout: 0,
             data: {
                 komut: this.komut,
                 packadi: this.packadi
             }
         }).then(response => {
-            return m.redraw('div.cevap', response)
+          m("div", {class: "cevap"}, console);
+          m.redraw();
         })
     }   
   } 

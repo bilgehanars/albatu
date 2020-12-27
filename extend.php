@@ -24,7 +24,7 @@ return [
 
     new Extend\Locales(__DIR__ . '/resources/locale'),
     
-    (new Extend\Routes('api'))
+    (new Extend\Routes('forum'))
         ->post('/AlbatuKomut', 'Albatu.Komut', AlbatuKomut::class),
 
 ];
