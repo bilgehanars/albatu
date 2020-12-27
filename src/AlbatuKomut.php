@@ -29,7 +29,7 @@ class AlbatuKomut implements RequestHandlerInterface {
         {
 
         
-            if isset(Arr::post($request->getQueryParams(), 'packadi')) && isset(Arr::post($request->getQueryParams(), 'komut'))
+            if (Arr::post($request->getQueryParams(), 'packadi') != NULL) && (Arr::post($request->getQueryParams(), 'komut') != NULL)
         { 
             this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
             this->$komut = Arr::post($request->getQueryParams(), 'komut');
@@ -43,7 +43,7 @@ class AlbatuKomut implements RequestHandlerInterface {
         }
         public function yap() {
                 if isset($request->getAttribute('actor')->assertAdmin()) {
-                if ($this->packadi != $null) {
+                if ($this->packadi != NULL) {
 
                 ini_set('memory_limit', '1G');
                 set_time_limit(300); // 5 minutes execution
