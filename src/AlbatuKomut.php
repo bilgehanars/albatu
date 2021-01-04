@@ -52,8 +52,8 @@ class AlbatuKomut implements RequestHandlerInterface {
 
                 $output = new Output;
                 $input = new ArrayInput([
-                    'command' => this->$komut, 
-                    'packages' => [this->$packadi], 
+                    'command' => $this->$komut, 
+                    'packages' => [$this->$packadi], 
                     '--working-dir' => $SiteAnaSayfa,
                 ]);
 

@@ -8,8 +8,8 @@ import withAttr from 'flarum/utils/withAttr';
 export default class AlbatuGiris extends ExtensionPage {
      oninit(vnode) {
             super.oninit(vnode); 
-            this.komut = '';
-            this.packadi = '';
+            this.komut = "";
+            this.packadi = "";
         }
 
         content() {
@@ -43,7 +43,7 @@ export default class AlbatuGiris extends ExtensionPage {
                 packadi: this.packadi
             }
         }).then(response => {
-          m("div", {class: "cevap"}, console);
+          m("div", {class: "cevap"}, response);
           m.redraw();
         })
     }   

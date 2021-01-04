@@ -26,6 +26,9 @@ return [
     
     (new Extend\Routes('forum'))
         ->post('/AlbatuKomut', 'Albatu.Komut', AlbatuKomut::class),
+   
+    (new Extend\Frontend('forum'))
+        ->route('/AlbatuKomut', 'Albatu.Komut')
 
 ];
 
