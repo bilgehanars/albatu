@@ -29,7 +29,7 @@ class AlbatuKomut implements RequestHandlerInterface {
         {
 
         
-            if (Arr::post($request->getQueryParams(), 'packadi') != NULL) && (Arr::post($request->getQueryParams(), 'komut') != NULL)
+            if (Arr::post($request->getQueryParams(), 'packadi') != NULL && Arr::post($request->getQueryParams(), 'komut') != NULL)
         { 
             this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
             this->$komut = Arr::post($request->getQueryParams(), 'komut');
