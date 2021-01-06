@@ -31,8 +31,8 @@ class AlbatuKomut implements RequestHandlerInterface {
         
             if (Arr::post($request->getQueryParams(), 'packadi') != NULL && Arr::post($request->getQueryParams(), 'komut') != NULL)
         { 
-            this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
-            this->$komut = Arr::post($request->getQueryParams(), 'komut');
+            $this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
+            $this->$komut = Arr::post($request->getQueryParams(), 'komut');
             $this->yap();
             $SiteAnaSayfa = app(Paths::class)['base'];
 
@@ -42,8 +42,8 @@ class AlbatuKomut implements RequestHandlerInterface {
     
         }
         public function yap() {
-                if isset($request->getAttribute('actor')->assertAdmin()) {
-                if ($this->packadi != NULL) {
+                if (null !== $request->getAttribute('actor')->assertAdmin()) {
+                if (isset($this->packadi)) {
 
                 ini_set('memory_limit', '1G');
                 set_time_limit(300); // 5 minutes execution
