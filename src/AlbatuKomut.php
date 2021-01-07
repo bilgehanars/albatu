@@ -21,7 +21,7 @@ class AlbatuKomut implements RequestHandlerInterface {
         public $SiteAnaSayfa;
         public $komut;
     
-        public function __construct(Factory $view)
+        public function __construct($view)
         {
             $this->view = $view;
         }
@@ -30,15 +30,15 @@ class AlbatuKomut implements RequestHandlerInterface {
 
         
             if (Arr::post($request->getQueryParams(), 'packadi') != NULL && Arr::post($request->getQueryParams(), 'komut') != NULL)
-        { 
-            $this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
-            $this->$komut = Arr::post($request->getQueryParams(), 'komut');
-            $this->yap();
-            $SiteAnaSayfa = app(Paths::class)['base'];
+            { 
+                $this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
+                $this->$komut = Arr::post($request->getQueryParams(), 'komut');
+                $this->yap();
+                $SiteAnaSayfa = app(Paths::class)['base'];
 
-            return new HtmlResponse($view->render());
+                return new HtmlResponse($view->render());
         
-        } 
+            } 
     
         }
         public function yap() {
