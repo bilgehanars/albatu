@@ -11,7 +11,7 @@ use Composer\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput as Output;
 use Symfony\Component\Console\Output\OutputInterface;
-use Flarum\User;
+use Flarum\Group\Permission;
 use Flarum\Foundation;
 
 
@@ -21,22 +21,17 @@ class AlbatuKomut implements RequestHandlerInterface {
         public $SiteAnaSayfa;
         public $komut;
     
-        public function __construct($view)
-        {
-            $this->view = $view;
-        }
         public function handle(Request $request): Response
         {
 
-        
-            if (Arr::post($request->getQueryParams(), 'packadi') != NULL && Arr::post($request->getQueryParams(), 'komut') != NULL)
+           if (Arr::post($request->getQueryParams(), 'packadi') != NULL && Arr::post($request->getQueryParams(), 'komut') != NULL)
             { 
                 $this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
                 $this->$komut = Arr::post($request->getQueryParams(), 'komut');
                 $this->yap();
                 $SiteAnaSayfa = app(Paths::class)['base'];
 
-                return new HtmlResponse($view->render());
+                return new JsonResponse(array('name' => $cikis));
         
             } 
     
@@ -62,7 +57,6 @@ class AlbatuKomut implements RequestHandlerInterface {
                 $application->run($input, $output);
                 $cikis = '<hr>';
                 $cikis .= '<pre>' . $output->fetch() . '</pre>';
-                $view = $this->view->make($cikis);
             }
         }
         }
