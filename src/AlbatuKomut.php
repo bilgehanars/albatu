@@ -31,7 +31,7 @@ class AlbatuKomut implements RequestHandlerInterface {
                 $this->yap();
                 $SiteAnaSayfa = app(Paths::class)['base'];
 
-                return new JsonResponse(array('name' => $cikis));
+                return new HtmlResponse($cikis);
         
             } 
     
