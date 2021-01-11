@@ -10,6 +10,7 @@ export default class AlbatuGiris extends ExtensionPage {
             this.komut = "";
             this.packadi = "";
             var RUN = "RUN";
+            Konsol = 'CONSOLE';
         }
 
         content() {
@@ -25,13 +26,7 @@ export default class AlbatuGiris extends ExtensionPage {
             onclick: () => yolla,
         }, RUN)}
       </form>
-        {
-            Konsol = 'CONSOLE';
-            var konsolx = {
-                view: function() { return m("div.cevap", onclick , Konsol); } 
-            }
-            m.mount(document.body, konsolx);
-        }
+        {m.mount(document.body, m('div.cevap', onclick , Konsol))}
     </div>
     
 
@@ -46,12 +41,12 @@ export default class AlbatuGiris extends ExtensionPage {
             data: {
                 'komut' : this.komut,
                 'packadi' : this.packadi
-            }
+            },
             deserialize: function(value) {
                 Konsol += value,
                 m.redraw()
-        })
-    }   
+        }
+    })   
   } 
 }
 
