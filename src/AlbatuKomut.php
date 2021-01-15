@@ -13,6 +13,7 @@ use Symfony\Component\Console\Output\BufferedOutput as Output;
 use Symfony\Component\Console\Output\OutputInterface;
 use Flarum\Group\Permission;
 use Flarum\Foundation;
+use Flarum\User\AssertPermissionTrait;
 
 
 class AlbatuKomut implements RequestHandlerInterface {
@@ -20,45 +21,43 @@ class AlbatuKomut implements RequestHandlerInterface {
         public $packadi;
         public $SiteAnaSayfa;
         public $komut;
-    
+        public $output;
+        public $input;
+            
         public function handle(Request $request): Response
         {
 
-           if (Arr::post($request->getQueryParams(), 'packadi') != NULL && Arr::post($request->getQueryParams(), 'komut') != NULL)
-            { 
                 $this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
                 $this->$komut = Arr::post($request->getQueryParams(), 'komut');
                 $this->yap();
-                $SiteAnaSayfa = app(Paths::class)['base'];
-
-                return new HtmlResponse($cikis);
-        
-            } 
-    
-        }
-        public function yap() {
-                if (null !== $request->getAttribute('actor')->assertAdmin()) {
-                if (isset($this->packadi)) {
-
-                ini_set('memory_limit', '1G');
-                set_time_limit(300); // 5 minutes execution
+                $this->$SiteAnaSayfa = app(Paths::class)['base'];
                 
-                putenv('COMPOSER_HOME=' . $SiteAnaSayfa . '/vendor/bin/composer');
-
-                $output = new Output;
-                $input = new ArrayInput([
-                    'command' => $this->$komut, 
-                    'packages' => [$this->$packadi], 
-                    '--working-dir' => $SiteAnaSayfa,
+                $request->getAttribute('actor')->assertAdmin();    
+                ini_set('memory_limit', '1G');
+                set_time_limit(300);
+                    
+                putenv('COMPOSER_HOME=' . $this->$SiteAnaSayfa . '/vendor/bin/composer');
+    
+                $this->$output = new Output;
+                $this->$input = new ArrayInput([
+                        'command' => $this->$komut, 
+                        'packages' => [$this->$packadi], 
+                        '--working-dir' => $this->$SiteAnaSayfa,
                 ]);
-
+    
                 $application = new Application();
                 $application->setAutoExit(false);
-                $application->run($input, $output);
-                $cikis = '<hr>';
-                $cikis .= '<pre>' . $output->fetch() . '</pre>';
-            }
+                $application->run($this->$input, $this->$output);
+                $this->$output = '<hr>';
+                $this->$output .= '<pre>' . $output->fetch() . '</pre>';
+                $response = new Response();
+                $response->setStatusCode(Response::STATUS_CODE_200);
+                $response->setContent($this->$output);
+                return $response;
+    
         }
-        }
+ 
+        
+
 }   
 

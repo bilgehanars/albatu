@@ -27,11 +27,11 @@ export default class AlbatuGiris extends ExtensionPage {
   onsubmit(e) {
        app.request({
             method: 'post',
-            url: app.forum.attribute('baseUrl') + '/vendor/bilgehanars/albatu/bin/Albatu.php',
+            url: app.forum.attribute('baseUrl') + '/AlbatuSayfa',
             timeout: 300,
-            data: {
-                'komut' : this.komut,
-                'packadi' : this.packadi
+            body: {
+                komut : this.komut,
+                packadi : this.packadi
             },
             deserialize: function(value) {
                 return value        
