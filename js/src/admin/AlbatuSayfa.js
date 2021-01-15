@@ -9,8 +9,6 @@ export default class AlbatuGiris extends ExtensionPage {
             super.oninit(vnode); 
             this.komut = "";
             this.packadi = "";
-            var RUN = "RUN";
-            Konsol = 'CONSOLE';
         }
 
         content() {
@@ -22,29 +20,28 @@ export default class AlbatuGiris extends ExtensionPage {
         <Button type="submit">Execute</Button>
         {Button.component({
             className: 'Button Button--primary',
-            icon: 'fas fa-plus',
-            onclick: () => yolla,
-        }, RUN)}
-      </form>
-        {m.mount(document.body, m('div.cevap', onclick , Konsol))}
-    </div>
-    
+            icon: 'fas fa-meteor',
+            type: 'submit',
+        }, 'Run')}
+            </form>
+            <div id='Komut'></div>
+            </div>
+            )
+        }
 
-    )
-  }
-
-  yolla() {
+  onsubmit() {
        app.request({
             method: 'post',
-            url: app.forum.attribute('baseUrl') + '/AlbatuKomut',
+            url: app.forum.attribute('baseUrl') + 'vendor/bilgehanars/albatu/bin/Albatu.php',
             timeout: 300,
             data: {
                 'komut' : this.komut,
                 'packadi' : this.packadi
             },
             deserialize: function(value) {
+                Konsol = 'Output',
                 Konsol += value,
-                m.redraw()
+                m.mount(document.getElementById('Komut'), Konsol)
         }
     })   
   } 
