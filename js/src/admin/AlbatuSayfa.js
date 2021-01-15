@@ -27,7 +27,7 @@ export default class AlbatuGiris extends ExtensionPage {
   onsubmit(e) {
        app.request({
             method: 'post',
-            url: app.forum.attribute('baseUrl') + 'vendor/bilgehanars/albatu/bin/Albatu.php',
+            url: app.forum.attribute('baseUrl') + '/vendor/bilgehanars/albatu/bin/Albatu.php',
             timeout: 300,
             data: {
                 'komut' : this.komut,
