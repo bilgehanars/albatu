@@ -39,7 +39,7 @@ export default class AlbatuGiris extends ExtensionPage {
     }).then(function(val) {
                 Konsol = 'Output',
                 Konsol += val,
-                m.mount(document.getElementById('Komut'), Konsol)
+                document.getElementById('Komut').innerHTML = Konsol
 
     })   
   } 
