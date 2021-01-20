@@ -29,7 +29,6 @@ class AlbatuKomut implements RequestHandlerInterface {
 
                 $this->$packadi = Arr::post($request->getQueryParams(), 'packadi');
                 $this->$komut = Arr::post($request->getQueryParams(), 'komut');
-                $this->yap();
                 $this->$SiteAnaSayfa = app(Paths::class)['base'];
                 
                 $request->getAttribute('actor')->assertAdmin();    
