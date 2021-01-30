@@ -16,7 +16,7 @@ export default class AlbatuGiris extends ExtensionPage {
             <div className={"container"}>
             <form onsubmit={this.onsubmit.bind(this)}>
                 <FieldSet label="Composer Command - Require/Update/Remove"><input className="FormControl" value={this.komut} oninput={e => this.komut = e.target.value}></input></FieldSet>
-                <FieldSet label="Package Name. (Example: Bilgehanars/Albatu)"><input className="FormControl" value={this.packadi} oninput={e => this.packadi = e.target.value}></input></FieldSet>
+                <FieldSet label="Package Name. (Example: bilgehanars/albatu)"><input className="FormControl" value={this.packadi} oninput={e => this.packadi = e.target.value}></input></FieldSet>
             <Button type="submit">Execute</Button>
             </form>
             <div id='Komut'></div>
@@ -27,14 +27,11 @@ export default class AlbatuGiris extends ExtensionPage {
   onsubmit(e) {
        app.request({
             method: 'post',
-            url: app.forum.attribute('baseUrl') + '/AlbatuSayfa',
+            url: app.forum.attribute('apiUrl') + '/AlbatuKomut',
             timeout: 300,
-            body: {
+            data: {
                 komut : this.komut,
                 packadi : this.packadi
-            },
-            deserialize: function(value) {
-                return value        
             }
     }).then(function(val) {
                 Konsol = 'Output',
